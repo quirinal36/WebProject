@@ -8,13 +8,9 @@ int k = 1;
 <html>
 <head>
 <meta charset="UTF-8">
-<title>연습문제 1</title>
-<style type="text/css">
-table { width:50%; border-collapse:collapse; border-bottom:2px solid #6bc2ae; }
-th, td { padding:5px 0; text-align:center; }
-thead th { width:20%; background:#6bc2ae; color:#fff; font-weight:bold; }
-tbody tr:nth-child(even) { background:#f5f5f5; }
-</style>
+<title>연습문제 2</title>
+
+<link href="../css/table.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body>
 
