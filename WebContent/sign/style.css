@@ -1,0 +1,17 @@
+﻿* { padding:0; margin:0; border:0; }
+body { background:#eee; font-family:"맑은 고딕", sans-serif; }
+
+
+#login { position:absolute; top:50%; left:50%; width:240px; padding:50px; margin:-141px 0 0 -170px; background:#fff; text-align:center; }
+#login > strong { display:inline-block; border-bottom:3px solid #6bc2ae; margin-bottom:20px; font-size:20px; }
+#login input[type="text"], #login input[type="password"] { display:block; width:100%; margin-bottom:10px; box-sizing:border-box; padding:10px; border:1px solid #ddd; border-radius:2px; }
+#login input[type="submit"] { display:block; width:100%; padding:10px 0; background:#6bc2ae; color:#fff; text-align:center; font-weight:bold; cursor:pointer; }
+
+
+#join { position:absolute; top:50%; left:50%; width:400px; padding:50px; margin:-212px 0 0 -250px; background:#fff; text-align:center; font-size:0; }
+#join > div.title > strong { display:inline-block; border-bottom:3px solid #6bc2ae; margin-bottom:20px; font-size:20px; }
+#join > div.left, #join > div.right { display:inline-block; width:46%; }
+#join > div.left { margin-right:8%; }
+#join dt { margin-bottom:5px; text-align:left; font-size:13px; }
+#join input[type="text"], #join input[type="password"] { display:block; width:100%; margin-bottom:20px; box-sizing:border-box; padding:10px; border:1px solid #ddd; border-radius:2px; }
+#join input[type="submit"] { display:block; width:100%; padding:10px 0; border-radius:2px; background:#6bc2ae; color:#fff; text-align:center; font-weight:bold; cursor:pointer; }
