@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>무제 문서</title>
-	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
 </head>
 <body>
 <form id="join">
