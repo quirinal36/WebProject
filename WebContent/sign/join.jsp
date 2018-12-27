@@ -1,0 +1,43 @@
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>무제 문서</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<form id="join">
+	<div class="title"><strong>회원가입</strong></div>
+	<div class="left">
+		<dl>
+			<dt>아이디</dt>
+			<dd><input type="text" placeholder="아이디" /></dd>
+		</dl>
+		<dl>
+			<dt>비밀번호</dt>
+			<dd><input type="text" placeholder="비밀번호" /></dd>
+		</dl>
+		<dl>
+			<dt>비밀번호 확인</dt>
+			<dd><input type="text" placeholder="비밀번호 확인" /></dd>
+		</dl>
+	</div>
+	<div class="right">
+		<dl>
+			<dt>이름</dt>
+			<dd><input type="text" placeholder="이름" /></dd>
+		</dl>
+		<dl>
+			<dt>생년월일</dt>
+			<dd><input type="text" placeholder="생년월일" /></dd>
+		</dl>
+		<dl>
+			<dt>이메일 주소</dt>
+			<dd><input type="text" placeholder="이메일 주소" /></dd>
+		</dl>
+	</div>
+	<input type="submit" value="회원가입" />
+</form>
+</body>
+</html>
