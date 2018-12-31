@@ -1,3 +1,5 @@
+<%@page import="org.json.JSONObject"%>
+<%@page import="www.bacoder.kr.control.UserController"%>
 <%@page import="java.util.logging.Logger"%>
 <%@page import="www.bacoder.kr.model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -21,5 +23,11 @@ user.setEmail(email);
 user.setJob(job);
 user.setGender(gender);
 
-out.print(user.toString());
+UserController controller = new UserController();
+int result = controller.addUser(user);
+
+JSONObject json = new JSONObject();
+json.put("result", result);
+
+out.print(json.toString());
 %>
