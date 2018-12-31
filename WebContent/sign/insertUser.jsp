@@ -1,12 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%@page import="java.util.logging.Logger"%>
+<%@page import="www.bacoder.kr.model.User"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+Logger logger = Logger.getLogger("");
 
-</body>
-</html>
+String login = request.getParameter("login");
+String pwd = request.getParameter("password");
+String name = request.getParameter("name");
+String job = request.getParameter("job");
+String birth = request.getParameter("birth");
+String email = request.getParameter("email");
+String gender = request.getParameter("gender");
+
+User user = new User();
+user.setLogin(login);
+user.setPwd(pwd);
+user.setName(name);
+user.setBirth(birth);
+user.setEmail(email);
+user.setJob(job);
+user.setGender(gender);
+
+out.print(user.toString());
+%>

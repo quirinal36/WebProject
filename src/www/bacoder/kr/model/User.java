@@ -1,5 +1,8 @@
 package www.bacoder.kr.model;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class User {
 	private int id;
 	private String login;
@@ -10,6 +13,9 @@ public class User {
 	private String postcode;
 	private String address;
 	private String addressDetail;
+	private String job;
+	private String gender;
+	
 	public int getId() {
 		return id;
 	}
@@ -64,6 +70,21 @@ public class User {
 	public void setAddressDetail(String addressDetail) {
 		this.addressDetail = addressDetail;
 	}
+	public String getJob() {
+		return job;
+	}
+	public void setJob(String job) {
+		this.job = job;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	
-	
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
+	}
 }
