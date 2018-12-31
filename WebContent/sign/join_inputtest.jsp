@@ -12,19 +12,19 @@
 	<div class="title"><strong>회원가입</strong></div>
 	<div class="left">
 		<dl>
-			<dt>아이디</dt>
+			<dt>login</dt>
 			<dd>
 				<input type="text" placeholder="login" name="login" required/>
 			</dd>
 		</dl>
 		<dl>
-			<dt>비밀번호</dt>
+			<dt>password</dt>
 			<dd>
 				<input type="password" placeholder="password" name="password"/>
 			</dd>
 		</dl>
 		<dl>
-			<dt>비밀번호 확인</dt>
+			<dt>password confirm</dt>
 			<dd>
 				<input type="password" placeholder="비밀번호 확인" />
 			</dd>
@@ -41,19 +41,19 @@
 	</div>
 	<div class="right">
 		<dl>
-			<dt>이름</dt>
+			<dt>name</dt>
 			<dd>
 				<input type="text" placeholder="name" name="name" required/>
 			</dd>
 		</dl>
 		<dl>
-			<dt>생년월일</dt>
+			<dt>birth</dt>
 			<dd>
 				<input type="text" placeholder="birth" name="birth" required/>
 			</dd>
 		</dl>
 		<dl>
-			<dt>이메일 주소</dt>
+			<dt>email</dt>
 			<dd>
 				<input type="email" placeholder="email" name="email" required/>
 			</dd>
@@ -67,7 +67,7 @@
 			</dd>
 		</dl>
 	</div>
-	<input type="submit" value="회원가입" />
+	<input type="submit" value="submit" />
 </form>
 </body>
 </html>

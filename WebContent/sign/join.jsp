@@ -13,7 +13,7 @@
 	</script>
 </head>
 <body>
-<form id="join" action="./insertUser.jsp">
+<form action="./insertUser.jsp">
 	<div class="title"><strong>회원가입</strong></div>
 	<div class="left">
 		<dl>
