@@ -58,6 +58,9 @@ public class UserController {
 			builder.append("Select id, login, name, birth, email, job, gender ")
 				.append("from User");
 			PreparedStatement pstmt = conn.prepareStatement(builder.toString());
+			
+			logger.info(pstmt.toString());
+			
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
 				User user = new User();

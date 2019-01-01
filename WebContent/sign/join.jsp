@@ -14,7 +14,7 @@
 </head>
 <body>
 <form id="join" action="./insertUser.jsp">
-	<div class="title"><strong>회원가입</strong></div>
+	<div class="title">회원가입</div>
 	<div class="left">
 		<dl>
 			<dt>login</dt>
