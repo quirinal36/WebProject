@@ -13,6 +13,8 @@ String job = request.getParameter("job");
 String birth = request.getParameter("birth");
 String email = request.getParameter("email");
 String gender = request.getParameter("gender");
+String postcode = request.getParameter("postcode");
+String address = request.getParameter("address");
 
 User user = new User();
 user.setLogin(login);
@@ -22,12 +24,12 @@ user.setBirth(birth);
 user.setEmail(email);
 user.setJob(job);
 user.setGender(gender);
+user.setPostcode(postcode);
+user.setAddress(address);
 
 UserController controller = new UserController();
-int result = controller.addUser(user);
 
-JSONObject json = new JSONObject();
-json.put("result", result);
+JSONObject json = controller.addUser(user);
 
 out.print(json.toString());
 %>

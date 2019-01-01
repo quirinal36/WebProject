@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.json.JSONObject;
+
 import www.bacoder.kr.db.DButil;
 import www.bacoder.kr.model.User;
 
@@ -19,15 +21,17 @@ public class UserController {
 	 * @param user
 	 * @return
 	 */
-	public int addUser(User user) {
-		int result = 0;
+	public JSONObject addUser(User user){
+		JSONObject result = new JSONObject();
+		int updateResult = 0;
+		//int result = 0;
 		try(Connection conn = new DButil().getConnection()){
 			int i = 1;
 			
 			StringBuilder builder = new StringBuilder();
 			builder.append("insert into User ")
-				.append("(login, pwd, name, birth, email, job, gender)")
-				.append("values (?,?,?,?,?,?,?)");
+				.append("(login, pwd, name, birth, email, job, gender, address, postcode)")
+				.append("values (?,?,?,?,?,?,?,?,?)");
 			
 			PreparedStatement pstmt = conn.prepareStatement(builder.toString());
 			pstmt.setString(i++, user.getLogin());
@@ -37,13 +41,17 @@ public class UserController {
 			pstmt.setString(i++, user.getEmail());
 			pstmt.setString(i++, user.getJob());
 			pstmt.setString(i++, user.getGender());
+			pstmt.setString(i++, user.getAddress());
+			pstmt.setString(i++, user.getPostcode());
 			
 			logger.info(pstmt.toString());
 			
-			result = pstmt.executeUpdate();
+			updateResult = pstmt.executeUpdate();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			result.put("message", e.getMessage());
+//			e.printStackTrace();
 		}
+		result.put("result", updateResult);
 		return result;
 	}
 	
