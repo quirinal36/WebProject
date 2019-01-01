@@ -11,7 +11,9 @@ String content = "JSP를 배워보자";
 <title><%=webConfig.getWEB_TITLE() %></title>
 </head>
 <body>
-
+	<a href="./sign/login.jsp">로그인화면</a><br/>
+	<a href="./sign/join.jsp">회원가입화면</a><br/>
+	<a href="./sign/userList.jsp">회원리스트</a><br/>
 	<a href="./day_1/practice01.jsp">1~100 까지의 합계</a><br/>
 	<a href="./day_1/practice02.jsp">일정한 간격으로 벌어지는 숫자</a><br/>
 	<a href="./day_1/practice03.jsp">소수구하기</a><br/>

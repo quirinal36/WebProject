@@ -10,6 +10,13 @@
 	function validate(){
 		console.log($("#join").serializeArray());
 	}
+	function formClick(){
+		if(confirm("회원가입 하시겠습니까?")){
+			$("#join").submit();
+		}else{
+			e.preventDefault();
+		}
+	}
 	</script>
 </head>
 <body>
@@ -66,13 +73,12 @@
 		<dl>
 			<dt>gender</dt>
 			<dd>
-				<label><input id="gender_male" type="radio" value="male" name="gender" checked>남</label>
-				
-				<label><input id="gender_female" type="radio" value="female" name="gender">여</label>
+				<label>남<input id="gender_male" type="radio" value="male" name="gender" checked></label>
+				<label>여<input id="gender_female" type="radio" value="female" name="gender"></label>
 			</dd>
 		</dl>
 	</div>
-	<input type="submit" value="회원가입" />
+	<input type="submit" value="회원가입" onclick="javascript:formClick();"/>
 	<input type="button" value="정보확인" onclick="javascript:validate();"/>
 </form>
 </body>
