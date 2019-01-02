@@ -33,3 +33,14 @@ JSONObject json = controller.addUser(user);
 
 out.print(json.toString());
 %>
+<%if(json.getInt("result") == 1) {%>
+	<br/>
+	로그인에 성공했습니다.<br/>
+	메인화면으로 이동합니다.<br/>
+	<a href="../index.jsp">이동</a>
+<%}else{ %>
+	<br/>
+	로그인에 실패했습니다.<br/>
+	회원가입 화면으로 돌아갑니다.<br/>
+	<a href="javascript:history.go(-1)">뒤로가기</a>
+<%}%>

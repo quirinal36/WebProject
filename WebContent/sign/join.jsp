@@ -8,13 +8,26 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script type="text/javascript">
 	function validate(){
-		console.log($("#join").serializeArray());
+		
 	}
 	function formClick(){
+		console.log($("#join").serializeArray());
+		var name = $("input[name='login']").val();
+		var password = $("input[name='password']").val();
+		if(name.length == 0){
+			alert("이름을 입력하세요.");
+			return false;
+		}
+		if(password.length == 0){
+			alert("비밀번호를 입력하세요.");
+			return false;
+		}
 		if(confirm("회원가입 하시겠습니까?")){
+			// form 의 submit 동작이 작동된다.
 			$("#join").submit();
 		}else{
-			e.preventDefault();
+			// 아무런 동작도 하지 않게 
+			alert("취소되었습니다.");
 		}
 	}
 	</script>
@@ -39,6 +52,12 @@
 			<dt>password confirm</dt>
 			<dd>
 				<input type="password" placeholder="비밀번호 확인" />
+			</dd>
+		</dl>
+		<dl>
+			<dt>address</dt>
+			<dd>
+				<input type="text" name="address" placeholder="주소" />
 			</dd>
 		</dl>
 		<dl>
@@ -71,6 +90,12 @@
 			</dd>
 		</dl>
 		<dl>
+			<dt>postcode</dt>
+			<dd>
+				<input type="text" name="postcode" placeholder="우편번호" />
+			</dd>
+		</dl>
+		<dl>
 			<dt>gender</dt>
 			<dd>
 				<label>남<input id="gender_male" type="radio" value="male" name="gender" checked></label>
@@ -79,7 +104,6 @@
 		</dl>
 	</div>
 	<input type="submit" value="회원가입" onclick="javascript:formClick();"/>
-	<input type="button" value="정보확인" onclick="javascript:validate();"/>
 </form>
 </body>
 </html>

@@ -21,10 +21,8 @@ List<User> list = controller.getUserList();
 			<th>index</th>
 			<th>login</th>
 			<th>name</th>
-			<th>birth</th>
-			<th>email</th>
-			<th>job</th>
-			<th>gender</th>
+			
+			<th>상세화면</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -33,10 +31,8 @@ List<User> list = controller.getUserList();
 			<td><%=user.getId() %></td>
 			<td><%=user.getLogin() %></td>
 			<td><%=user.getName() %></td>
-			<td><%=user.getBirth() %></td>
-			<td><%=user.getEmail() %></td>
-			<td><%=user.getJob() %></td>
-			<td><%=user.getGender() %></td>
+			
+			<td><a href="./userDetail.jsp?id=<%=user.getId()%>">이동</a></td>
 		</tr>
 		<%} %>
 	</tbody>

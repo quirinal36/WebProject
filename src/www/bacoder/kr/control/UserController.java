@@ -24,7 +24,7 @@ public class UserController {
 	public JSONObject addUser(User user){
 		JSONObject result = new JSONObject();
 		int updateResult = 0;
-		//int result = 0;
+		
 		try(Connection conn = new DButil().getConnection()){
 			int i = 1;
 			
@@ -86,5 +86,66 @@ public class UserController {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	/**
+	 * 로그인하기
+	 * 
+	 * @param user
+	 * @return
+	 */
+	public User getUser(User user) {
+		try(Connection conn = new DButil().getConnection()){
+			StringBuilder sql = new StringBuilder();
+			sql.append("Select id, login, name, birth, email, job, gender ")
+				.append("from User ")
+				.append("where login = ? and pwd = ?");
+			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, user.getLogin());
+			pstmt.setString(2, user.getPwd());
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				user.setId(rs.getInt("id"));
+				user.setLogin(rs.getString("login"));
+				user.setName(rs.getString("name"));
+				user.setBirth(rs.getString("birth"));
+				user.setEmail(rs.getString("email"));
+				user.setJob(rs.getString("job"));
+				user.setGender(rs.getString("gender"));
+			}
+			return user;
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	public User getUser(int id) {
+		User user = new User();
+		
+		try(Connection conn = new DButil().getConnection()){
+			StringBuilder sql = new StringBuilder();
+			sql.append("Select id, login, name, birth, email, job, gender, postcode, address ")
+				.append("from User ")
+				.append("where id=?");
+			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				user.setId(rs.getInt("id"));
+				user.setLogin(rs.getString("login"));
+				user.setName(rs.getString("name"));
+				user.setBirth(rs.getString("birth"));
+				user.setEmail(rs.getString("email"));
+				user.setJob(rs.getString("job"));
+				user.setGender(rs.getString("gender"));
+				user.setPostcode(rs.getString("postcode"));
+				user.setAddress(rs.getString("address"));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		return user;
 	}
 }
