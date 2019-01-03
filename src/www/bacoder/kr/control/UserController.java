@@ -125,7 +125,7 @@ public class UserController {
 		
 		try(Connection conn = new DButil().getConnection()){
 			StringBuilder sql = new StringBuilder();
-			sql.append("Select id, login, name, birth, email, job, gender, postcode, address ")
+			sql.append("Select id, login, name, birth, email, job, gender, postcode, address, profile ")
 				.append("from User ")
 				.append("where id=?");
 			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
@@ -141,6 +141,7 @@ public class UserController {
 				user.setGender(rs.getString("gender"));
 				user.setPostcode(rs.getString("postcode"));
 				user.setAddress(rs.getString("address"));
+				user.setProfile(rs.getString("profile"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
