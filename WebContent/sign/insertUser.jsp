@@ -15,6 +15,7 @@ String email = request.getParameter("email");
 String gender = request.getParameter("gender");
 String postcode = request.getParameter("postcode");
 String address = request.getParameter("address");
+String profile = request.getParameter("profile");
 
 User user = new User();
 user.setLogin(login);
@@ -26,6 +27,7 @@ user.setJob(job);
 user.setGender(gender);
 user.setPostcode(postcode);
 user.setAddress(address);
+user.setProfile(profile);
 
 UserController controller = new UserController();
 

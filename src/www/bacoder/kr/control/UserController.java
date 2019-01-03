@@ -30,8 +30,8 @@ public class UserController {
 			
 			StringBuilder builder = new StringBuilder();
 			builder.append("insert into User ")
-				.append("(login, pwd, name, birth, email, job, gender, address, postcode)")
-				.append("values (?,?,?,?,?,?,?,?,?)");
+				.append("(login, pwd, name, birth, email, job, gender, address, postcode, profile)")
+				.append("values (?,?,?,?,?,?,?,?,?,?)");
 			
 			PreparedStatement pstmt = conn.prepareStatement(builder.toString());
 			pstmt.setString(i++, user.getLogin());
@@ -43,6 +43,7 @@ public class UserController {
 			pstmt.setString(i++, user.getGender());
 			pstmt.setString(i++, user.getAddress());
 			pstmt.setString(i++, user.getPostcode());
+			pstmt.setString(i++, user.getProfile());
 			
 			logger.info(pstmt.toString());
 			

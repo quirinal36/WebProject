@@ -15,6 +15,7 @@ public class User {
 	private String addressDetail;
 	private String job;
 	private String gender;
+	private String profile;
 	
 	public int getId() {
 		return id;
@@ -82,7 +83,12 @@ public class User {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	
+	public String getProfile() {
+		return profile;
+	}
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);

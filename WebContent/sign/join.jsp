@@ -7,11 +7,11 @@
 	<link rel="stylesheet" type="text/css" href="../css/style.css" />
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script type="text/javascript">
-	function validate(){
-		
+	function openUpload(){
+		window.open("http://www.bacoder.kr/image/photo_uploader/popup/photo_uploader.jsp",
+				"mywindow","menubar=1,resizable=1,width=350,height=250");
 	}
 	function formClick(){
-		console.log($("#join").serializeArray());
 		var name = $("input[name='login']").val();
 		var password = $("input[name='password']").val();
 		if(name.length == 0){
@@ -35,6 +35,10 @@
 <body>
 <form id="join" action="./insertUser.jsp">
 	<div class="title">회원가입</div>
+	<div class="title">
+		<img src="../img/no_image.png" style="width:100px; height:100px;" id="targetImgPreview">
+		<input type="button" value="이미지" onclick="javascript:openUpload();"/>
+	</div>
 	<div class="left">
 		<dl>
 			<dt>login</dt>
@@ -103,6 +107,7 @@
 			</dd>
 		</dl>
 	</div>
+	<input type="hidden" id="targetUpload" name="profile"/>
 	<input type="submit" value="회원가입" onclick="javascript:formClick();"/>
 </form>
 </body>
