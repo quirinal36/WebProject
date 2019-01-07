@@ -150,4 +150,40 @@ public class UserController {
 		
 		return user;
 	}
+	
+	/**
+	 * User 정보 수정하기 
+	 * @param user
+	 * @return
+	 */
+	public JSONObject updateUser(User user) {
+		JSONObject json = new JSONObject();
+		
+		try(Connection conn = new DButil().getConnection()){
+			StringBuilder sql = new StringBuilder();
+			sql.append("update User set ")
+			.append("name=?, birth=?, email=?, postcode=?, address=? ")
+			.append("where id=?");
+			
+			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+			int i = 1;
+			
+			pstmt.setString(i++, user.getName());
+			pstmt.setString(i++, user.getBirth());
+			pstmt.setString(i++, user.getEmail());
+			pstmt.setString(i++, user.getPostcode());
+			pstmt.setString(i++, user.getAddress());
+			pstmt.setInt(i++, user.getId());
+			
+			logger.info(pstmt.toString());
+			
+			json.put("result", pstmt.executeUpdate());
+		}catch(SQLException e) {
+			json.put("message", e.getMessage());
+			json.put("errorcode", e.getErrorCode());
+			e.printStackTrace();
+		}
+		
+		return json;
+	}
 }

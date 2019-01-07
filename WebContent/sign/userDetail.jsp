@@ -24,7 +24,7 @@
 <div>
 	<dl>
 		<dd>
-			<img src="<%=user.getProfile() %>"/>
+			<img src="<%=user.getProfile() %>" style="width:300px;"/>
 		</dd>
 		<dt>번호</dt>
 		<dd><%=user.getId() %></dd>
