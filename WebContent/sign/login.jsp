@@ -12,6 +12,7 @@
 	<input type="text" placeholder="아이디" name="login" />
 	<input type="password" placeholder="비밀번호" name="password"/>
 	<input type="submit" value="로그인" />
+	<a href="./join.jsp">회원가입</a>
 </form>
 </body>
 </html>
