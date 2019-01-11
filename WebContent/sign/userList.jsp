@@ -15,29 +15,29 @@ List<User> list = controller.getUserList();
 
 </head>
 <body>
-<table>
-	<thead>
-		<tr>
-			<th>index</th>
-			<th>login</th>
-			<th>name</th>
-			
-			<th>상세화면</th>
-			<th>수정하기</th>
-		</tr>
-	</thead>
-	<tbody>
-		<%for(User user : list) {%>
-		<tr>
-			<td><%=user.getId() %></td>
-			<td><%=user.getLogin() %></td>
-			<td><%=user.getName() %></td>
-			
-			<td><a href="./userDetail.jsp?id=<%=user.getId()%>">상세보기</a></td>
-			<td><a href="./editUser.jsp?id=<%=user.getId()%>">수정하기</a></td>
-		</tr>
-		<%} %>
-	</tbody>
-</table>
+	<table>
+		<thead>
+			<tr>
+				<th>index</th>
+				<th>login</th>
+				<th>name</th>
+				
+				<th>상세화면</th>
+				<th>수정하기</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%for(User user : list) {%>
+			<tr>
+				<td><%=user.getId() %></td>
+				<td><%=user.getLogin() %></td>
+				<td><%=user.getName() %></td>
+				
+				<td><a href="./userDetail.jsp?id=<%=user.getId()%>">상세보기</a></td>
+				<td><a href="./editUser.jsp?id=<%=user.getId()%>">수정하기</a></td>
+			</tr>
+			<%} %>
+		</tbody>
+	</table>
 </body>
 </html>

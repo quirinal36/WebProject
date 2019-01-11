@@ -24,16 +24,17 @@ public class UserController {
 	public JSONObject addUser(User user){
 		JSONObject result = new JSONObject();
 		int updateResult = 0;
-		
 		try(Connection conn = new DButil().getConnection()){
 			int i = 1;
 			
-			StringBuilder builder = new StringBuilder();
-			builder.append("insert into User ")
-				.append("(login, pwd, name, birth, email, job, gender, address, postcode, profile)")
-				.append("values (?,?,?,?,?,?,?,?,?,?)");
+			StringBuilder sql = new StringBuilder();
+			sql.append("insert into User "
+					+ "(login, pwd, name, birth, email, job, gender, "
+						+ "address, postcode, profile) values "
+						+ "(?,?,?,?,?,?,?,?,?,?)");
 			
-			PreparedStatement pstmt = conn.prepareStatement(builder.toString());
+			PreparedStatement pstmt = 
+					conn.prepareStatement(sql.toString());
 			pstmt.setString(i++, user.getLogin());
 			pstmt.setString(i++, user.getPwd());
 			pstmt.setString(i++, user.getName());
@@ -45,12 +46,9 @@ public class UserController {
 			pstmt.setString(i++, user.getPostcode());
 			pstmt.setString(i++, user.getProfile());
 			
-			logger.info(pstmt.toString());
-			
 			updateResult = pstmt.executeUpdate();
 		}catch(SQLException e) {
 			result.put("message", e.getMessage());
-//			e.printStackTrace();
 		}
 		result.put("result", updateResult);
 		return result;
@@ -67,8 +65,6 @@ public class UserController {
 			builder.append("Select id, login, name, birth, email, job, gender ")
 				.append("from User");
 			PreparedStatement pstmt = conn.prepareStatement(builder.toString());
-			
-			logger.info(pstmt.toString());
 			
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -98,12 +94,16 @@ public class UserController {
 	public User getUser(User user) {
 		try(Connection conn = new DButil().getConnection()){
 			StringBuilder sql = new StringBuilder();
-			sql.append("Select id, login, name, birth, email, job, gender ")
+			sql.append("Select * ")
 				.append("from User ")
 				.append("where login = ? and pwd = ?");
-			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+			PreparedStatement pstmt = 
+					conn.prepareStatement(sql.toString());
 			pstmt.setString(1, user.getLogin());
 			pstmt.setString(2, user.getPwd());
+			
+			System.out.println(pstmt.toString());
+			
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
 				user.setId(rs.getInt("id"));
@@ -175,7 +175,7 @@ public class UserController {
 			pstmt.setString(i++, user.getAddress());
 			pstmt.setInt(i++, user.getId());
 			
-			logger.info(pstmt.toString());
+			System.out.println(pstmt.toString());
 			
 			json.put("result", pstmt.executeUpdate());
 		}catch(SQLException e) {
