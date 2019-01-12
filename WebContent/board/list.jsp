@@ -33,11 +33,11 @@ Iterator<Board> iter = list.iterator();
 		<header>
 			<div>
 				<ul>
-					<li><a href="<%=request.getContextPath()%>/sign/userList.jsp">유저 리스트 보기</a></li>
+					<li><a href="<%=request.getContextPath()%>/sign/userList.jsp">유저 리스트</a></li>
 					<li><a href="<%=request.getContextPath()%>/board/list.jsp">게시판</a></li>
 					<li><a href="#">메뉴2</a></li>
 				</ul>
-				<a href="./sign/login.jsp">로그인</a>
+				<a href="<%=request.getContextPath()%>/sign/login.jsp">로그인</a>
 			</div>
 		</header>
 		<div class="container">
