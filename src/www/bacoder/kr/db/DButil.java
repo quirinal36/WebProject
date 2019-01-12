@@ -7,15 +7,18 @@ import java.util.Properties;
 import java.util.logging.Logger;
 
 public class DButil {
-	Logger logger = Logger.getLogger(DButil.class.getSimpleName());
+	// 상속 가능한 객체
+	protected Logger logger = Logger.getLogger(DButil.class.getSimpleName());
 	
-	private String userName 	= "user_bacoder";
-	private String password 	= "bacoder";
-	private String dbms 		= "mysql";
-	private String dbName 		= "bacoder_schema";
-	private String serverName 	= "35.194.106.34";
-	private int portNumber 		= 3306;
+	// 상속 불가능한 객체
+	private final String userName 	= "user_bacoder";
+	private final String password 	= "bacoder";
+	private final String dbms 		= "mysql";
+	private final String dbName 		= "bacoder_schema";
+	private final String serverName 	= "35.194.106.34";
+	private final int portNumber 		= 3306;
 	
+	// 상속 가능한 메소드
 	public Connection getConnection() throws SQLException {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
