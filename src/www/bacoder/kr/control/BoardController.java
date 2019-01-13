@@ -11,7 +11,10 @@ import java.util.List;
 import www.bacoder.kr.db.DButil;
 import www.bacoder.kr.model.Board;
 
-public class BoardController extends DButil implements Controller<Board>{
+public class BoardController 
+	extends DButil implements Controller<Board>{
+	
+	
 	public String errorMsg;
 	
 	public String getErrorMsg() {
@@ -28,11 +31,11 @@ public class BoardController extends DButil implements Controller<Board>{
 		int i = 1;
 		try(Connection conn = getConnection()){
 			String sql = new StringBuilder()
-					.append("insert into Board (title, content, writer, wdate)")
-					.append(" ")
-					.append("value")
-					.append(" ")
-					.append("(?,?,?,NOW())").toString();
+				.append("insert into Board (title, content, writer, wdate)")
+				.append(" ")
+				.append("value")
+				.append(" ")
+				.append("(?,?,?,NOW())").toString();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(i++, input.getTitle());
 			pstmt.setString(i++, input.getContent());

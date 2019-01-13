@@ -7,12 +7,9 @@ import java.sql.SQLException;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-public class Board {
-	private int id;
-	private String title;
+public class Board extends Content{
 	private String content;
 	private Date date;
-	private String writer;
 	
 	public Board() {
 	}
@@ -20,18 +17,7 @@ public class Board {
 	public Board(int id) {
 		this.id = id;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
+	
 	public String getContent() {
 		return content;
 	}
@@ -43,12 +29,6 @@ public class Board {
 	}
 	public void setDate(Date date) {
 		this.date = date;
-	}
-	public String getWriter() {
-		return writer;
-	}
-	public void setWriter(String writer) {
-		this.writer = writer;
 	}
 	
 	@Override
