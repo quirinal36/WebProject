@@ -12,10 +12,22 @@ List<User> list = controller.getUserList();
 <meta charset="UTF-8">
 <title>User List</title>
 <link href="../css/table.css" rel="stylesheet" type="text/css" media="all">
-
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
 </head>
 <body>
-	<table>
+	<div class="wrap">
+		<header>
+			<div>
+				<ul>
+					<li><a href="<%=request.getContextPath()%>/sign/userList.jsp">유저 리스트</a></li>
+					<li><a href="<%=request.getContextPath()%>/board/list.jsp">게시판</a></li>
+					<li><a href="#">메뉴2</a></li>
+				</ul>
+				<a href="<%=request.getContextPath()%>/sign/login.jsp">로그인</a>
+			</div>
+		</header>
+		<div class="container">
+			<table>
 		<thead>
 			<tr>
 				<th>index</th>
@@ -39,5 +51,11 @@ List<User> list = controller.getUserList();
 			<%} %>
 		</tbody>
 	</table>
+		</div>
+		<footer>
+			<p>ⓒ 회사명.</p>
+		</footer>
+	</div>
+	
 </body>
 </html>

@@ -102,8 +102,6 @@ public class UserController {
 			pstmt.setString(1, user.getLogin());
 			pstmt.setString(2, user.getPwd());
 			
-			System.out.println(pstmt.toString());
-			
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
 				user.setId(rs.getInt("id"));
@@ -174,8 +172,6 @@ public class UserController {
 			pstmt.setString(i++, user.getPostcode());
 			pstmt.setString(i++, user.getAddress());
 			pstmt.setInt(i++, user.getId());
-			
-			System.out.println(pstmt.toString());
 			
 			json.put("result", pstmt.executeUpdate());
 		}catch(SQLException e) {
