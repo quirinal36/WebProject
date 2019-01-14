@@ -12,6 +12,7 @@ public class Movie extends Content {
 	private String language;		// 언어
 	private int age;				// 사용자연령
 	private int price;				// 가격
+	
 	public int getRunningTime() {
 		return runningTime;
 	}

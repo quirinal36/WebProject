@@ -9,7 +9,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class Board extends Content{
 	private String content;
-	private Date date;
+	private Date wdate;
 	
 	public Board() {
 	}
@@ -25,10 +25,10 @@ public class Board extends Content{
 		this.content = content;
 	}
 	public Date getDate() {
-		return date;
+		return wdate;
 	}
 	public void setDate(Date date) {
-		this.date = date;
+		this.wdate = date;
 	}
 	
 	@Override
