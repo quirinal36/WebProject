@@ -21,8 +21,8 @@ public class UserController {
 	 * @param user
 	 * @return
 	 */
-	public JSONObject addUser(User user){
-		JSONObject result = new JSONObject();
+	public int addUser(User user){
+		//JSONObject result = new JSONObject();
 		int updateResult = 0;
 		try(Connection conn = new DButil().getConnection()){
 			int i = 1;
@@ -48,10 +48,9 @@ public class UserController {
 			
 			updateResult = pstmt.executeUpdate();
 		}catch(SQLException e) {
-			result.put("message", e.getMessage());
+			
 		}
-		result.put("result", updateResult);
-		return result;
+		return updateResult;
 	}
 	
 	/**
@@ -160,7 +159,7 @@ public class UserController {
 		try(Connection conn = new DButil().getConnection()){
 			StringBuilder sql = new StringBuilder();
 			sql.append("update User set ")
-			.append("name=?, birth=?, email=?, postcode=?, address=? ")
+			.append("name=?, birth=?, email=?, postcode=?, address=? , pwd=? ")
 			.append("where id=?");
 			
 			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
@@ -171,7 +170,10 @@ public class UserController {
 			pstmt.setString(i++, user.getEmail());
 			pstmt.setString(i++, user.getPostcode());
 			pstmt.setString(i++, user.getAddress());
+			pstmt.setString(i++, user.getPwd());
 			pstmt.setInt(i++, user.getId());
+			
+			logger.info(pstmt.toString());
 			
 			json.put("result", pstmt.executeUpdate());
 		}catch(SQLException e) {
