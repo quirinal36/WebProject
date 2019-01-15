@@ -1,5 +1,8 @@
 package www.bacoder.kr.model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -60,6 +63,23 @@ public class Movie extends Content {
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	public static Movie parseMovie(ResultSet rs) throws SQLException {
+		Movie movie = new Movie();
+		movie.setId(rs.getInt("id"));
+		movie.setProductId(rs.getString("productId"));
+		movie.setTitle(rs.getString("title"));
+		movie.setWriter(rs.getString("writer"));
+		movie.setPhotoUrl(rs.getString("photoUrl"));
+		movie.setPrice(rs.getInt("price"));
+		movie.setRunningTime(rs.getInt("runningTime"));
+		movie.setOpenDate(rs.getString("openDate"));
+		movie.setDirector(rs.getString("director"));
+		movie.setActor(rs.getString("actor"));
+		movie.setNational(rs.getString("national"));
+		movie.setLanguage(rs.getString("language"));
+		movie.setAge(rs.getInt("age"));
+		return movie;
 	}
 	@Override
 	public String toString() {

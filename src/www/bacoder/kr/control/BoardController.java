@@ -11,19 +11,7 @@ import java.util.List;
 import www.bacoder.kr.db.DButil;
 import www.bacoder.kr.model.Board;
 
-public class BoardController 
-	extends DButil implements Controller<Board>{
-	
-	
-	public String errorMsg;
-	
-	public String getErrorMsg() {
-		return errorMsg;
-	}
-
-	public void setErrorMsg(String errorMsg) {
-		this.errorMsg = errorMsg;
-	}
+public class BoardController extends DButil implements Controller<Board>{
 	
 	@Override
 	public int insert(Board input) {
@@ -49,12 +37,18 @@ public class BoardController
 		return result;
 	}
 
+	/**
+	 * 실습과제 ( 2019.01.16 예정 )
+	 */
 	@Override
 	public int update(Board input) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	/**
+	 * 실습과제 ( 2019.01.16 예정 )
+	 */
 	@Override
 	public int delete(Board input) {
 		// TODO Auto-generated method stub
@@ -104,6 +98,12 @@ public class BoardController
 		return list;
 	}
 
+	/**
+	 * 실습과제 2019.01.14
+	 * 
+	 * board/detail.jsp 에 사용됨 
+	 * 
+	 */
 	@Override
 	public Board selectOne(Board input) {
 		Board result = new Board();

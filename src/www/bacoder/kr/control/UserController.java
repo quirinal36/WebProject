@@ -21,8 +21,8 @@ public class UserController {
 	 * @param user
 	 * @return
 	 */
-	public int addUser(User user){
-		//JSONObject result = new JSONObject();
+	public JSONObject addUser(User user){
+		JSONObject result = new JSONObject();
 		int updateResult = 0;
 		try(Connection conn = new DButil().getConnection()){
 			int i = 1;
@@ -47,10 +47,11 @@ public class UserController {
 			pstmt.setString(i++, user.getProfile());
 			
 			updateResult = pstmt.executeUpdate();
+			result.put("result", updateResult);
 		}catch(SQLException e) {
 			
 		}
-		return updateResult;
+		return result;
 	}
 	
 	/**

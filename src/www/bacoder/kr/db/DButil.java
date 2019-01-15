@@ -17,6 +17,15 @@ public class DButil {
 	private final String dbName 		= "bacoder_schema";
 	private final String serverName 	= "35.194.106.34";
 	private final int portNumber 		= 3306;
+	public String errorMsg;
+	
+	public String getErrorMsg() {
+		return errorMsg;
+	}
+
+	public void setErrorMsg(String errorMsg) {
+		this.errorMsg = errorMsg;
+	}
 	
 	// 상속 가능한 메소드
 	public Connection getConnection() throws SQLException {

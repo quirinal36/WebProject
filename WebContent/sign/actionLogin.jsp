@@ -1,3 +1,4 @@
+<%@page import="www.bacoder.kr.WebAppConfig"%>
 <%@page import="www.bacoder.kr.control.UserController"%>
 <%@page import="www.bacoder.kr.model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -14,5 +15,8 @@ System.out.print(user.toString());
 UserController control = new UserController();
 user = control.getUser(user);
 
-System.out.print(user.toString());
+if(user.getId() > 0){
+	session.setAttribute(WebAppConfig.SESSION_KEY, user.getId());
+}
+out.print(user.toString());
 %>
