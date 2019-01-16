@@ -19,7 +19,7 @@ Board board = control.selectOne(search);
 	<head>
 		<meta charset="UTF-8">
 		<title><%=board.getTitle() %></title>
-		<link href="../css/table.css" rel="stylesheet" type="text/css" media="all">
+		<link rel="stylesheet" type="text/css" media="all" href="http://www.bacoder.kr/webpr/css/table.css">
 		<script type="text/javascript">
 		function deleteBoard(id){
 			if(confirm("삭제 하시겠습니까?")){

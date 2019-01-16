@@ -7,7 +7,7 @@ String content = "JSP를 배워보자";
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="./css/style.css" />
+<link rel="stylesheet" type="text/css" href="http://www.bacoder.kr/webpr/css/style.css" />
 <meta charset="UTF-8">
 <title><%=webConfig.getWEB_TITLE() %></title>
 </head>
@@ -18,7 +18,7 @@ String content = "JSP를 배워보자";
 				<ul>
 					<li><a href="<%=request.getContextPath()%>/sign/userList.jsp">유저 리스트</a></li>
 					<li><a href="<%=request.getContextPath()%>/board/list.jsp">게시판</a></li>
-					<li><a href="<%=request.getContextPath()%>/movie/list.jsp">메뉴2</a></li>
+					<li><a href="<%=request.getContextPath()%>/movie/list.jsp">소개하기</a></li>
 				</ul>
 				<a href="<%=request.getContextPath()%>/sign/login.jsp">로그인</a>
 			</div>

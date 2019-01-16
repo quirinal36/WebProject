@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>form action</title>
-	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="http://www.bacoder.kr/webpr/css/style.css" />
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script type="text/javascript">
 	function openUpload(){

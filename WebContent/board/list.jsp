@@ -24,8 +24,8 @@ Iterator<Board> iter = list.iterator();
 	<head>
 	<meta charset="UTF-8">
 	<title>User List</title>
-	<link href="../css/table.css" rel="stylesheet" type="text/css" media="all">
-	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link href="http://www.bacoder.kr/webpr/css/table.css" rel="stylesheet" type="text/css" media="all">
+	<link rel="stylesheet" type="text/css" href="http://www.bacoder.kr/webpr/css/style.css" />
 	
 	</head>
 	<body>
@@ -35,7 +35,7 @@ Iterator<Board> iter = list.iterator();
 				<ul>
 					<li><a href="<%=request.getContextPath()%>/sign/userList.jsp">유저 리스트</a></li>
 					<li><a href="<%=request.getContextPath()%>/board/list.jsp">게시판</a></li>
-					<li><a href="#">메뉴2</a></li>
+					<li><a href="<%=request.getContextPath()%>/movie/list.jsp">소개하기</a></li>
 				</ul>
 				<a href="<%=request.getContextPath()%>/sign/login.jsp">로그인</a>
 			</div>
