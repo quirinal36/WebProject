@@ -10,6 +10,11 @@ try{
 	
 }
 Board board = new Board(id);
-out.println(board.toString());
-out.print("<br/>Please coding me~!");
+
+// 컨트롤러 생성
+BoardController control = new BoardController();
+
+// 삭제 메소드 호출
+int result = control.delete(board);
 %>
+삭제 결과 : <%=result%>

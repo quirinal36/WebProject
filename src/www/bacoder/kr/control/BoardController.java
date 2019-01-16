@@ -42,8 +42,26 @@ public class BoardController extends DButil implements Controller<Board>{
 	 */
 	@Override
 	public int update(Board input) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		try(Connection conn = getConnection()){
+			// 1. 데이터베이스 커넥션
+			
+			// 2. SQL 문 준비 -> 물음표를 포함, 미완성 SQL문
+			String sql = "update Board set title=?, content=? where id=?";
+			
+			// 3. SQL 문 빈칸완성 -> 물음표를 대체, 완성된 SQL문
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, input.getTitle());
+			pstmt.setString(2, input.getContent());
+			pstmt.setInt(3, input.getId());
+			
+			// 4. SQL 문 실행
+			result = pstmt.executeUpdate();
+		}catch(SQLException e) {
+			errorMsg = e.getMessage();
+			e.printStackTrace();
+		}	
+		return result;
 	}
 
 	/**
@@ -51,8 +69,20 @@ public class BoardController extends DButil implements Controller<Board>{
 	 */
 	@Override
 	public int delete(Board input) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		try(Connection conn = getConnection()){ // 1. 데이터베이스 접속
+			// 2. SQL 문 작성 (? 포함 : 미완성)
+			String sql = "delete from Board where id = ?";
+			// 3. SQL 문 완성 (? 대체 : 완성)
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, input.getId());
+			
+			// 4. 쿼리문 실행
+			result = pstmt.executeUpdate();
+		}catch(SQLException e) {
+			errorMsg = e.getMessage();
+		}
+		return result;
 	}
 
 	@Override

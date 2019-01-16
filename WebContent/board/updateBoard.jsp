@@ -19,6 +19,6 @@ board.setContent(content);
 board.setWriter(writer);
 
 BoardController control = new BoardController();
-out.println(board.toString());
-out.print("<br/>please coding me~!");
+int result = control.update(board);
+
 %>
