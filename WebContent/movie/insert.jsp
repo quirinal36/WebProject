@@ -48,7 +48,8 @@
 						대표사진
 					</td>
 					<td>
-						<input type="text" name="photoUrl" placeholder="http://www.bacoder.kr/img/img.jpg">
+						<input id="targetUpload" type="text" name="photoUrl" placeholder="이미지주소나 또는 파일을 업로드하세요"/>
+						<input type="button" value="업로드" onclick="javascript:openUpload();"/>
 					</td>
 				</tr>
 				<tr>
@@ -97,6 +98,12 @@
 					</td>
 					<td>
 						<input type="text" name="language" placeholder="한국어">
+					</td>
+				</tr>
+				<tr>
+					<td>관람가능연령</td>
+					<td>
+						<input type="number" name="age" placeholder="15"/>세
 					</td>
 				</tr>
 			</tbody>

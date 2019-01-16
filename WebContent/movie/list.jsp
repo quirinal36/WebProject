@@ -40,7 +40,7 @@ if(searchTitle!=null && searchTitle.length()>0){
 				<input type="text" placeholder="제목검색" name="title" 
 					<%if(searchTitle!=null && searchTitle.length()>0){ out.print("value='"+searchTitle+"'"); }%>/>
 				<input type="submit" value="검색"/>
-				<input type="button" value="새글작성" onclick="javascript:window.location.href='./write.jsp'"/>
+				<input type="button" value="새글작성" onclick="javascript:window.location.href='./insert.jsp'"/>
 			</form>
 			<table>
 				<thead>

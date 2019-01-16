@@ -1,12 +1,9 @@
-<%@page import="java.util.List"%>
+<%@page import="org.json.JSONObject"%>
 <%@page import="www.bacoder.kr.control.MovieController"%>
 <%@page import="www.bacoder.kr.model.Movie"%>
-<%@page import="org.json.JSONObject"%>
-<%@page import="java.util.logging.Logger"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-Logger logger = Logger.getLogger("");
-
+String strId = request.getParameter("id");
 String title = request.getParameter("title");
 String photoUrl = request.getParameter("photoUrl");
 String runningTime = request.getParameter("runningTime");
@@ -17,7 +14,13 @@ String national = request.getParameter("national");
 String language = request.getParameter("language");
 String strAge = request.getParameter("age");
 
-Movie movie = new Movie();
+int id = 0;
+try{
+	id = Integer.parseInt(strId);
+}catch(NumberFormatException e){
+	e.printStackTrace();
+}
+Movie movie = new Movie(id);
 movie.setTitle(title);
 movie.setPhotoUrl(photoUrl);
 movie.setOpenDate(openDate);
@@ -36,23 +39,12 @@ try{
 	
 }
 MovieController control = new MovieController();
-int result = control.insert(movie);
+int result = control.update(movie);
 
 JSONObject json = new JSONObject();
 json.put("result", result);
-if(result == 0){
-	json.put("message", control.getErrorMsg());
-}
+json.put("message", control.getErrorMsg());
+
 out.print(json.toString());
 %>
-<%if(json.getInt("result") == 1) {%>
-	<br/>
-	글 등록에 성공했습니다.<br/>
-	메인화면으로 이동합니다.<br/>
-	<a href="../index.jsp">이동</a>
-<%}else{ %>
-	<br/>
-	글등록에 실패했습니다.<br/>
-	작성중인 화면으로 되돌아갑니다.<br/>
-	<a href="javascript:history.go(-1)">뒤로가기</a>
-<%}%>
+<a href="./list.jsp">리스트보기</a>

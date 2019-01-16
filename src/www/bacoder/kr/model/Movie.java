@@ -16,6 +16,11 @@ public class Movie extends Content {
 	private int age;				// 사용자연령
 	private int price;				// 가격
 	
+	public Movie() {}
+	public Movie(int id) {
+		this.id = id;
+	}
+	
 	public int getRunningTime() {
 		return runningTime;
 	}
