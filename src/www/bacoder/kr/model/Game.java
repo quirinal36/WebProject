@@ -1,5 +1,8 @@
 package www.bacoder.kr.model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -46,6 +49,18 @@ public class Game extends Content {
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	public static Game parse(ResultSet rs) throws SQLException {
+		Game game = new Game();
+		game.setId(rs.getInt("id"));
+		game.setPhotoUrl(rs.getString("photoUrl"));
+		game.setPrice(rs.getInt("price"));
+		game.setCompany(rs.getString("company"));
+		game.setAge(rs.getInt("age"));
+		game.setType(rs.getString("type"));
+		game.setVersion(rs.getDouble("version"));
+		game.setPlatform(rs.getString("platform"));
+		return game;
 	}
 	@Override
 	public String toString() {

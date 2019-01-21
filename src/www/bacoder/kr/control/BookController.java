@@ -9,30 +9,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 import www.bacoder.kr.db.DButil;
-import www.bacoder.kr.model.Song;
+import www.bacoder.kr.model.Book;
 
-public class SongController extends DButil implements Controller<Song> {
-	
+public class BookController extends DButil implements Controller<Book> {
+
 	@Override
-	public int insert(Song input) {
+	public int insert(Book input) {
 		int result = 0;
 		int i = 1;
 		try(Connection conn = getConnection()){
 			String sql = new StringBuilder()
-				.append("insert into Song") 
-				.append(" ")
-				.append("(title, photoUrl, singer, national, language, mvYoutubeUrl)")
+				.append("insert into Book (title, writer, photoUrl, price, publisher, publishedDate, page, national, language)")
 				.append(" ")
 				.append("value")
 				.append(" ")
-				.append("(?,?,?,?,?,?)").toString();
+				.append("(?,?,?,?,?,?,?,?,?)").toString();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(i++, input.getTitle());
+			pstmt.setString(i++, input.getWriter());
 			pstmt.setString(i++, input.getPhotoUrl());
-			pstmt.setString(i++, input.getSinger());
+			pstmt.setInt(i++, input.getPrice());
+			pstmt.setString(i++, input.getPublisher());
+			pstmt.setString(i++, input.getPublishedDate());
+			pstmt.setInt(i++, input.getPage());
 			pstmt.setString(i++, input.getNational());
 			pstmt.setString(i++, input.getLanguage());
-			pstmt.setString(i++, input.getMvYoutubeUrl());
 			
 			logger.info(pstmt.toString());
 			
@@ -45,23 +46,28 @@ public class SongController extends DButil implements Controller<Song> {
 	}
 
 	@Override
-	public int update(Song input) {
+	public int update(Book input) {
 		int result = 0;
 		try(Connection conn = getConnection()){
 			String sql = new StringBuilder()
-					.append("update Song set ")
+					.append("update Game set ")
 					.append(" ")
-					.append("title=?, photoUrl=?, singer=?, national=?, language=? , mvYoutubeUrl=?")
+					.append("title=?, writer=?, photoUrl=?, price=?, publisher=? , publisiedDate=?, ")
+					.append(" ")
+					.append("page=?, national=?, language=?")
 					.append(" ")
 					.append("where id=?").toString();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			int i = 1;
 			pstmt.setString(i++, input.getTitle());
+			pstmt.setString(i++, input.getWriter());
 			pstmt.setString(i++, input.getPhotoUrl());
-			pstmt.setString(i++, input.getSinger());
+			pstmt.setInt(i++, input.getPrice());
+			pstmt.setString(i++, input.getPublisher());
+			pstmt.setString(i++, input.getPublishedDate());
+			pstmt.setInt(i++, input.getPage());
 			pstmt.setString(i++, input.getNational());
 			pstmt.setString(i++, input.getLanguage());
-			pstmt.setString(i++, input.getMvYoutubeUrl());
 			pstmt.setInt(i++, input.getId());
 			
 			logger.info(pstmt.toString());
@@ -75,11 +81,11 @@ public class SongController extends DButil implements Controller<Song> {
 	}
 
 	@Override
-	public int delete(Song input) {
+	public int delete(Book input) {
 		int result = 0;
 		try(Connection conn = getConnection()){
 			String sql = new StringBuilder()
-					.append("delete from Song where id = ?").toString();
+					.append("delete from Book where id = ?").toString();
 			
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, input.getId());
@@ -93,18 +99,18 @@ public class SongController extends DButil implements Controller<Song> {
 	}
 
 	@Override
-	public List<Song> select() {
-		List<Song> result = new ArrayList<Song>();
+	public List<Book> select() {
+		List<Book> result = new ArrayList<Book>();
 		
 		try(Connection conn = getConnection()){
 			String sql = new StringBuilder()
-					.append("select * from Song").toString();
+					.append("select * from Book").toString();
 			Statement stmt = conn.createStatement();
 			logger.info(stmt.toString());
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()) {
-				Song song = Song.parse(rs);
-				result.add(song);
+				Book book = Book.parse(rs);
+				result.add(book);
 			}
 		}catch(SQLException e) {
 			errorMsg = e.getMessage();
@@ -114,23 +120,23 @@ public class SongController extends DButil implements Controller<Song> {
 	}
 
 	@Override
-	public List<Song> select(Song input) {
-		List<Song> result = new ArrayList<Song>();
+	public List<Book> select(Book input) {
+		List<Book> result = new ArrayList<Book>();
 		
 		try(Connection conn = getConnection()){
-			StringBuilder sql = new StringBuilder()
-					.append("select * from Song")
+			String sql = new StringBuilder()
+					.append("select * from Book")
 					.append(" ")
-					.append("where title like ?");
-			PreparedStatement stmt = conn.prepareStatement(sql.toString());
+					.append("where title like ?").toString();
+			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, "%" + input.getTitle() + "%");
 			
 			logger.info(stmt.toString());
 			
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
-				Song song = Song.parse(rs);
-				result.add(song);
+				Book book = Book.parse(rs);
+				result.add(book);
 			}
 		}catch(SQLException e) {
 			errorMsg = e.getMessage();
@@ -140,13 +146,13 @@ public class SongController extends DButil implements Controller<Song> {
 	}
 
 	@Override
-	public Song selectOne(Song input) {
-		Song song = new Song();
+	public Book selectOne(Book input) {
+		Book book = new Book();
 		try(Connection conn = getConnection()){
 			String sql = new StringBuilder()
 					.append("select *")
 					.append(" ")
-					.append(" from Song")
+					.append(" from Book")
 					.append(" ")
 					.append("where id=?").toString();
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -156,14 +162,14 @@ public class SongController extends DButil implements Controller<Song> {
 			
 			ResultSet rs = stmt.executeQuery();
 			if(rs.next()) {
-				song = Song.parse(rs);
+				book = Book.parse(rs);
 			}
-			logger.info(song.toString());
+			logger.info(book.toString());
 		}catch(SQLException e) {
 			errorMsg = e.getMessage();
 			e.printStackTrace();
 		}	
-		return song;
+		return book;
 	}
 
 }

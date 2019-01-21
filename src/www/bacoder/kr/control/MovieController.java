@@ -133,7 +133,7 @@ public class MovieController extends DButil implements Controller<Movie> {
 			
 			logger.info(stmt.toString());
 			
-			ResultSet rs = stmt.executeQuery(sql);
+			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 				Movie movie = Movie.parseMovie(rs);
 				result.add(movie);
